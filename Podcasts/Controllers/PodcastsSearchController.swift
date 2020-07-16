@@ -11,10 +11,7 @@ import Alamofire
 
 class PodcastsSearchController: UITableViewController, UISearchBarDelegate {
     
-    var podcasts = [
-        Podcast(trackName: "LBTA", artistName: "Briang Voong"),
-        Podcast(trackName: "Some Podcasts", artistName: "Aleks Avdukich")
-    ]
+    var podcasts = [Podcast]()
     
     let cellId = "cellId"
     
@@ -37,7 +34,6 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate {
     
     // Получаем данные по url
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(1)
         APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
             self.podcasts = podcasts
             self.tableView.reloadData()
@@ -45,24 +41,40 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate {
     }
     
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.tableFooterView = UIView()
+        let nib = UINib(nibName: "PodcastCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellId)
     }
     
     // MARK: - UITableView
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter a Search Term"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return podcasts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PodcastCell
         
         let podcast = self.podcasts[indexPath.row]
-        cell.textLabel?.text = "\(podcast.trackName ?? "")\n\(podcast.artistName ?? "")"
-        cell.textLabel?.numberOfLines = -1
-        cell.imageView?.image = UIImage.init(named: "appicon")
-        
+        cell.podcast = podcast
+            
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 132
     }
     
 }

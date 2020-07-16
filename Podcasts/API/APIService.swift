@@ -36,7 +36,6 @@ class APIService {
             guard let data = dataResponse.data else { return }
             
             do {
-                print(3)
                 let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
                 print(searchResult.resultCount)
                 completionHandler(searchResult.results)
@@ -47,7 +46,6 @@ class APIService {
                 print("Failed to decode:", decodeErr)
             }
         }
-        print(2)
     }
     
     struct SearchResult: Decodable {
