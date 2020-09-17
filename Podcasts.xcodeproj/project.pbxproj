@@ -21,6 +21,8 @@
 		1F42097624B52CD800C8433E /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F42097524B52CD800C8433E /* PodcastCell.xib */; };
 		1F60FA592512B95300D3759B /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60FA572512B95300D3759B /* EpisodeCell.swift */; };
 		1F60FA5A2512B95300D3759B /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F60FA582512B95300D3759B /* EpisodeCell.xib */; };
+		1F60FA5E2513BF1800D3759B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60FA5D2513BF1800D3759B /* String.swift */; };
+		1F60FA602513C0EC00D3759B /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60FA5F2513C0EC00D3759B /* RSSFeed.swift */; };
 		1FB9E4F42512B4A200296A36 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9E4F32512B4A200296A36 /* Episode.swift */; };
 		1FF9CD9B24C636BA00614732 /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9CD9A24C636BA00614732 /* EpisodesController.swift */; };
 		81C89188E5C01611FC028060 /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EAE2054AF3FF1DB447A90C7 /* Pods_Podcasts.framework */; };
@@ -43,6 +45,8 @@
 		1F42097524B52CD800C8433E /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		1F60FA572512B95300D3759B /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		1F60FA582512B95300D3759B /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		1F60FA5D2513BF1800D3759B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		1F60FA5F2513C0EC00D3759B /* RSSFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
 		1FB9E4F32512B4A200296A36 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		1FF9CD9A24C636BA00614732 /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
 		3911361E92EE942C58D931CF /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		1F32743224AAA11A004758E3 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				1F60FA5C2513BEF800D3759B /* Extensions */,
 				1F42096724B4E54D00C8433E /* API */,
 				1F277C6424ABD94200AD0815 /* Models */,
 				1F42096A24B51A4000C8433E /* Views */,
@@ -134,6 +139,15 @@
 				1F60FA582512B95300D3759B /* EpisodeCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1F60FA5C2513BEF800D3759B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F60FA5D2513BF1800D3759B /* String.swift */,
+				1F60FA5F2513C0EC00D3759B /* RSSFeed.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		34FE9D21CE10A308E11E5DFE /* Frameworks */ = {
@@ -270,12 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F60FA602513C0EC00D3759B /* RSSFeed.swift in Sources */,
 				1F32743824AAA11A004758E3 /* ViewController.swift in Sources */,
 				1F42096924B4E57E00C8433E /* APIService.swift in Sources */,
 				1F42096E24B520C900C8433E /* PodcastCell.swift in Sources */,
 				1F60FA592512B95300D3759B /* EpisodeCell.swift in Sources */,
 				1FB9E4F42512B4A200296A36 /* Episode.swift in Sources */,
 				1F32743424AAA11A004758E3 /* AppDelegate.swift in Sources */,
+				1F60FA5E2513BF1800D3759B /* String.swift in Sources */,
 				1F277C6624ABD96300AD0815 /* Podcast.swift in Sources */,
 				1F34C73024AAA4B900589F0E /* MainTabBarController.swift in Sources */,
 				1F277C6324ABD86F00AD0815 /* PodcastsSearchController.swift in Sources */,
