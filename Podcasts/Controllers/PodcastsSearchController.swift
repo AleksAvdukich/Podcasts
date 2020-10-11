@@ -78,7 +78,7 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate {
         
         let podcast = self.podcasts[indexPath.row]
         cell.podcast = podcast
-            
+        
         return cell
     }
     
