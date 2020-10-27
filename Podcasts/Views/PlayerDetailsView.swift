@@ -38,13 +38,44 @@ class PlayerDetailsView: UIView {
         return avPlayer
     }()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+            print("Episode starting playing")
+            self.enlargeEpisodeImageView()
+        }
+    }
+    
     // MARK: - IBActions & Outlets
     
     @IBAction func handleDismiss(_ sender: Any) {
         self.removeFromSuperview()
     }
     
-    @IBOutlet weak var episodeImageView: UIImageView!
+    private func enlargeEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = .identity
+        })
+    }
+    
+    private let shrukenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    
+    private func shrinkEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = self.shrukenTransform
+        })
+    }
+    
+    @IBOutlet weak var episodeImageView: UIImageView! {
+        didSet {
+            episodeImageView.layer.cornerRadius = 5
+            episodeImageView.clipsToBounds = true
+            episodeImageView.transform = shrukenTransform
+        }
+    }
     
     @IBOutlet weak var playPauseButton: UIButton! {
         didSet {
@@ -58,9 +89,11 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            enlargeEpisodeImageView()
         } else {
             player.pause()
             playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            shrinkEpisodeImageView()
         }
     }
     
